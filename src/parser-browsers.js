@@ -324,7 +324,7 @@ const browsersList = [
       const browser = {
         name: (/qqbrowserlite/i).test(ua) ? 'QQ Browser Lite' : 'QQ Browser',
       };
-      const version = Utils.getFirstMatch(/(?:qqbrowserlite|qqbrowser)[/](\d+(\.?_?\d+)+)/i, ua) || Utils.getFirstMatch(commonVersionIdentifier, ua);
+      const version = Utils.getFirstMatch(/(?:qqbrowserlite|qqbrowser)\/(\d+(\.?_?\d+)+)/i, ua) || Utils.getFirstMatch(commonVersionIdentifier, ua);
 
       if (version) {
         browser.version = version;
@@ -332,6 +332,65 @@ const browsersList = [
 
       return browser;
     },
+  },
+  {
+    test: [/metasr|sogou/i],
+    describe(ua) {
+      const browser = {
+        name: 'SoGou Browser',
+      };
+      const version = Utils.getFirstMatch(/(?:metasr|sogou)[\s/](\d+(\.?_?\d+)+)/i, ua) || Utils.getFirstMatch(commonVersionIdentifier, ua);
+
+      if (version) {
+        browser.version = version;
+      }
+
+      return browser;
+    }
+  },
+  {
+    test: [/360[e|s]?e|QihooBrowser|QHBrowser/i],
+    describe(ua) {
+      const browser = {
+        name: '360 Browser',
+      };
+      const version = Utils.getFirstMatch(/(?:360[e|s]?e|QihooBrowser|QHBrowser)[\s/](\d+(\.?_?\d+)+)/i, ua) || Utils.getFirstMatch(commonVersionIdentifier, ua);
+
+      if (version) {
+        browser.version = version;
+      }
+
+      return browser;
+    }
+  },
+  {
+    test: [/2345explorer|2345chrome/i],
+    describe(ua) {
+      const browser = {
+        name: '2345 Browser',
+      };
+      const version = Utils.getFirstMatch(/(?:2345explorer|2345chrome)[\s/](\d+(\.?_?\d+)+)/i, ua) || Utils.getFirstMatch(commonVersionIdentifier, ua);
+
+      if (version) {
+        browser.version = version;
+      }
+
+      return browser;
+    }
+  }, {
+    test: [/lbbrowser/i],
+    describe(ua) {
+      const browser = {
+        name: 'liebao Browser',
+      };
+      const version = Utils.getFirstMatch(/lbbrowser[\s\/](\d+(\.?_?\d+)+)/i, ua) || Utils.getFirstMatch(commonVersionIdentifier, ua);
+
+      if (version) {
+        browser.version = version;
+      }
+
+      return browser;
+    }
   },
   {
     test: [/msie|trident/i],

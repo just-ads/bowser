@@ -6,6 +6,12 @@ export default Bowser;
 export as namespace Bowser;
 
 declare namespace Bowser {
+    type BowserMatch = {
+        test: [RegExp];
+        describe: (ua: string) => Parser.BrowserDetails
+    }
+
+
   /**
    * Creates a Parser instance
    * @param {string} UA - User agent string
@@ -22,9 +28,12 @@ declare namespace Bowser {
 
   function parse(UA: string): Parser.ParsedResult;
 
+  function addBrowserMatch(match: BowserMatch, index: number): void;
+
   /**
    * Constants exposed via bowser getters
    */
+  const BROWSER_LIST: BowserMatch[];
   const BROWSER_MAP: Record<string, string>;
   const ENGINE_MAP: Record<string, string>;
   const OS_MAP: Record<string, string>;

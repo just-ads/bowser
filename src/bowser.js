@@ -11,6 +11,7 @@ import {
   OS_MAP,
   PLATFORMS_MAP,
 } from './constants.js';
+import browsersList from "./parser-browsers";
 
 /**
  * Bowser class.
@@ -55,6 +56,14 @@ class Bowser {
    */
   static parse(UA) {
     return (new Parser(UA)).getResult();
+  }
+
+  static addBrowserMatch(match, index){
+    browsersList.splice(index, 0, match);
+  }
+
+  static get BROWSER_LIST() {
+    return browsersList
   }
 
   static get BROWSER_MAP() {
